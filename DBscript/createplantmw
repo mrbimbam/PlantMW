@@ -1,0 +1,62 @@
+CREATE DATABASE plantmw;
+USE plantmw;
+
+CREATE TABLE Countries (
+	CountryID BIGINT AUTO_INCREMENT,
+	CountryName VARCHAR(80),
+	PRIMARY KEY(CountryID)
+);
+CREATE TABLE States (
+	StateID BIGINT AUTO_INCREMENT,
+	CountryID BIGINT,
+	StateName VARCHAR(80),
+	PRIMARY KEY(StateID),
+	FOREIGN KEY(CountryID) REFERENCES Countries(CountryID)
+);
+CREATE TABLE PostalCodes (
+	PostalCodeID BIGINT AUTO_INCREMENT, 
+	StateID BIGINT, 
+	PostalCode VARCHAR(8),
+	PRIMARY KEY(PostalCodeID),
+	FOREIGN KEY(StateID) References States(StateID)
+);
+CREATE TABLE Owner(
+	OwnerID BIGINT AUTO_INCREMENT,
+	Email VARCHAR(120),
+	Firstname VARCHAR(120),
+	LastName VARCHAR(120),
+	UserName VARCHAR(120),
+	Geolocation VARCHAR(120),
+	Address1 VARCHAR(120),
+	Address2 VARCHAR(120),
+	Phone VARCHAR(20),
+	PostalCodeID BIGINT,
+	StateID BIGINT,
+	CountryID BIGINT,
+	RegDate DATETIME,
+	PRIMARY KEY(OwnerID),
+	FOREIGN KEY(PostalCodeID) REFERENCES PostalCodes(PostalCodeID),
+	FOREIGN KEY(StateID) REFERENCES States(StateID),
+	FOREIGN KEY(CountryID) REFERENCES Country(CountryID)
+);
+
+CREATE TABLE MessageThread(
+	ThreadID BIGINT AUTO_INCREMENT,
+	OwnerID BIGINT,
+	Date DateTime DATETIME
+	PRIMARY KEY(ThreadID),
+	FOREIGN KEY(OwnerID) References Owner(OwnerID)
+);
+CREATE TABLE Message(
+	MessageID BIGINT AUTO_INCREMENT,
+	ThreadID BIGINT,
+	OwnerID BIGINT,
+	Date DATETIME,
+	Message VarChar(255),
+	Data VARCHAR(255)
+	PRIMARY KEY(MessageID),
+	FOREIGN KEY(ThreadID) References MessageThread(ThreadID),
+	FOREIGN KEY(OwnerID) References Owner(OwnerID)
+);
+
+SHOW TABLES;
