@@ -217,17 +217,18 @@ DateRegistered<y:LabelModel>
     <node id="n8">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.entityRelationship.big_entity">
-          <y:Geometry height="190.0" width="103.0" x="476.0" y="-96.0"/>
+          <y:Geometry height="235.09151193633954" width="107.0" x="476.0" y="-118.54575596816977"/>
           <y:Fill color="#E8EEF7" color2="#B7C9E3" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" backgroundColor="#B7C9E3" configuration="com.yworks.entityRelationship.label.name" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasLineColor="false" height="17.96875" modelName="internal" modelPosition="tr" textColor="#000000" visible="true" width="66.150390625" x="32.849609375" y="4.0">ThirdParty</y:NodeLabel>
-          <y:NodeLabel alignment="left" autoSizePolicy="content" configuration="com.yworks.entityRelationship.label.attributes" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="171.625" modelName="custom" textColor="#000000" visible="true" width="97.626953125" x="2.0" y="29.96875">*TPID
+          <y:NodeLabel alignment="center" autoSizePolicy="content" backgroundColor="#B7C9E3" configuration="com.yworks.entityRelationship.label.name" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasLineColor="false" height="17.96875" modelName="internal" modelPosition="tr" textColor="#000000" visible="true" width="66.150390625" x="36.849609375" y="4.0">ThirdParty</y:NodeLabel>
+          <y:NodeLabel alignment="left" autoSizePolicy="content" configuration="com.yworks.entityRelationship.label.attributes" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="185.59375" modelName="custom" textColor="#000000" visible="true" width="97.626953125" x="2.0" y="29.96875">*TPID
 #OwnerID
 Name
 Email
 GeoLocation
 Streetname
-Address
+Address1
+Address2
 Phone
 #PostalCodeID
 #StateID
@@ -590,7 +591,7 @@ RingName<y:LabelModel>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0">
-            <y:Point x="101.5" y="317.0"/>
+            <y:Point x="101.5" y="325.5"/>
           </y:Path>
           <y:LineStyle color="#000000" type="line" width="1.0"/>
           <y:Arrows source="none" target="standard"/>
