@@ -70,4 +70,78 @@ CREATE TABLE Message(
 	FOREIGN KEY(OwnerID) REFERENCES Owner(OwnerID)
 );
 
+CREATE TABLE Manufacturer(
+	ManufacturerID BIGINT AUTO_INCREMENT,
+	OwnerID BIGINT,
+	Name VARCHAR(120),
+	Email VARCHAR(120),
+	Geolocation VARCHAR(120),
+	Streetname VARCARH(120),
+	Address VARCHAR(120),
+	Phone VARCHAR(20),
+	PostalCodeID BIGINT,
+	StateID BIGINT,
+	CountryID BIGINT,
+	DateRegisterd DateTime,
+	PRIMARY KEY(ManufacturerID),
+	FOREIGN KEY(OwnerID) REFERENCES Owner(OwnerID),
+	FOREIGN KEY(PostalCodeID) REFERENCES PostalCodes(PostalCodeID),
+	FOREIGN KEY(StateID) REFERENCES States(StateID),
+	FOREIGN KEY(ContryID) REFERENCES Countries(CountryID)
+);
+
+CREATE TABLE PRODUCT(
+	ProductID BIGINT AUTO_INCREMENT,
+	ManufacturerID BIGINT,
+	ProductName VARCHAR(120),
+	PRIMARY KEY(ProductID),
+	FOREIGN KEY(ManufacturerID) REFERENCES Manufacturer(ManufacturerID)
+);
+
+CREATE TABLE Thing(
+	ThingID BIGINT AUTO_INCREMENT,
+	OwnerID BIGINT,
+	ProductID BIGINT,
+	SerialNumber VARCHAR(32),
+	Geolocation VARCHAR(120),
+	Name VARCHAR(120)
+	DateRegistered DATETIME,
+	PRIMARY KEY(ThingID),
+	FOREIGN KEY(OwnerID) REFERENCES Owner(OwnerID),
+	FOREIGN KEY(ProductID) REFERENCES Product(ProductID)
+);
+
+CREATE TABLE ThingEvent(
+	EventID BIGINT AUTO_INCREASE,
+	ThingId BIGINT,
+	EventDate DATETIME,
+	Event VARCHAR(255),
+	Data BLOB,
+	PRIMARY KEY(EventID),
+	FOREIGN KEY(ThingID) REFERENCES Thing(ThingID)
+);
+
+
+CREATE TABLE ThirdParty(
+	TPID BIGINT AUTO_INCREASE,
+	OwnerID BIGINT,
+	Name VARCHAR(120),
+	Email VARCHAR(120),
+	Geolocation VARCHAR(120),
+	Streetname VARCHAR(120),
+	Address1 VARCHAR(120),
+	Address2 VARCHAR(120),
+	Phone VARCHAR(20),
+	PostalCodeID BIGINT,
+	StateID BIGINT,
+	CountryID BIGINT,
+	PRIMARY KEY(TPID),
+	FOREIGN KEY(OwnerID) REFERENCES Owner(OwnerID),
+	FOREIGN KEY(PostalCodeID) REFERENCES PostalCodes(PostalCodeID),
+	FOREIGN KEY(StateID) REFERENCES States(StateID),
+	FOREIGN KEY(CountryID) REFERENCES Country(CountryID)
+);
+
+
+
 SHOW TABLES;
