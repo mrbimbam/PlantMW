@@ -20,6 +20,9 @@ CREATE TABLE PostalCodes (
 	PRIMARY KEY(PostalCodeID),
 	FOREIGN KEY(StateID) References States(StateID)
 );
+
+
+
 CREATE TABLE Owner(
 	OwnerID BIGINT AUTO_INCREMENT,
 	Email VARCHAR(120),
@@ -37,26 +40,34 @@ CREATE TABLE Owner(
 	PRIMARY KEY(OwnerID),
 	FOREIGN KEY(PostalCodeID) REFERENCES PostalCodes(PostalCodeID),
 	FOREIGN KEY(StateID) REFERENCES States(StateID),
-	FOREIGN KEY(CountryID) REFERENCES Country(CountryID)
+	FOREIGN KEY(CountryID) REFERENCES Countries(CountryID)
+);
+
+CREATE TABLE Hash(
+	PasswordID BIGINT,
+	OwnerID BIGINT,
+	PasswordHash BLOB,
+	FOREIGN KEY(OwnerID) REFERENCES Owner(OwnerID)	
 );
 
 CREATE TABLE MessageThread(
 	ThreadID BIGINT AUTO_INCREMENT,
 	OwnerID BIGINT,
-	Date DateTime DATETIME
+	Date DATETIME,
 	PRIMARY KEY(ThreadID),
-	FOREIGN KEY(OwnerID) References Owner(OwnerID)
+	FOREIGN KEY(OwnerID) REFERENCES Owner(OwnerID)
 );
+
 CREATE TABLE Message(
 	MessageID BIGINT AUTO_INCREMENT,
 	ThreadID BIGINT,
 	OwnerID BIGINT,
 	Date DATETIME,
 	Message VarChar(255),
-	Data VARCHAR(255)
+	Data VARCHAR(255),
 	PRIMARY KEY(MessageID),
-	FOREIGN KEY(ThreadID) References MessageThread(ThreadID),
-	FOREIGN KEY(OwnerID) References Owner(OwnerID)
+	FOREIGN KEY(ThreadID) REFERENCES MessageThread(ThreadID),
+	FOREIGN KEY(OwnerID) REFERENCES Owner(OwnerID)
 );
 
 SHOW TABLES;
